@@ -3,22 +3,9 @@
 
     {% block body %}
 
-        <h2>titre de l'article</h2>
-        <div class="metada">Ecrit le 10/11/2018 à 19h00 dans la catégorie jardinage</div>
-        <div class="content"><img src="{{ asset('img/jardin.jpg') }}" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem et ex fugit iure, ratione
-                voluptatibus?</p>
-            <p>At consequuntur fugit hic laborum nesciunt porro possimus repellendus voluptate! Dolor inventore
-                quibusdam saepe temporibus.</p>
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores iste nobis pariatur ratione sapiente
-                ullam! Aliquam ducimus eaque expedita impedit iure maiores maxime, minima numquam quibusdam quidem rerum
-                soluta tempore totam vero, voluptatem. Aut ea eius explicabo perspiciatis quisquam unde voluptatibus. Eaque
-                enim in nesciunt nobis quasi quibusdam quo voluptate.</p>
-            <p>Culpa ea eveniet fuga fugiat molestiae quas quidem, veritatis! Eligendi in libero nemo quam. Accusamus
-                aliquam asperiores cupiditate doloremque, eius expedita impedit itaque laboriosam libero, magni minus nam
-                quibusdam, sit suscipit ut. A ad aperiam doloremque hic, iusto labore laboriosam nihil obcaecati officiis
-                perspiciatis quia ratione tempora temporibus tenetur veniam.</p>
-
+        <h2>{{ article.title }}</h2>
+        <div class="metada">Ecrit le {{ article.createdAt | date ('d/m/Y') }} à {{ article.createdAt | date('H:i') }} dans la catégorie jardinage</div>
+        <div class="content"><img src="{{ article.image}}" alt="">
+            {{ article.content | raw }}
 
     {% endblock %}

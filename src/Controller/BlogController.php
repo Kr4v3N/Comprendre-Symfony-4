@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use http\Env\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class BlogController extends AbstractController
 {
@@ -24,7 +26,9 @@ class BlogController extends AbstractController
 
     /**
      * @Route("/", name="home")
+     *
      */
+
     public function home(){
         return $this->render('blog/home.html.twig',[
             'title' => "Bienvenue les amis",
@@ -33,10 +37,28 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/blog/12", name"blog_show")
+     * @Route("blog/new", name="blog_create")
      */
-    public function show(){
+    public function create(){
 
-        return $this->render('blog/show.html.twig');
+        return $this->render('blog/create.html.twig');
     }
+
+
+    /**
+     * @Route("/blog/{id}", name="blog_show")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+
+    public function show ($id) {
+        $repo = $this->getDoctrine()->getRepository(Article::class);
+
+        $article = $repo->find($id);
+
+        return $this->render('blog/show.html.twig', [
+            'article' => $article
+        ]);
+
+    }
+
 }

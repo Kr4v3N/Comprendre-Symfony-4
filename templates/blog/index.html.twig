@@ -16,7 +16,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta earum facere maiores quidem rem sit?</p>
                     <p>Assumenda eligendi enim id incidunt, ipsa iure libero modi optio quaerat quasi repudiandae sint
                         totam.</p>
-                    <a href="{{ path('blog_show') }}" class="btn btn-primary">lire la suite</a>
+                    <a href="{{ path('blog_show', {'id':article.id}) }}" class="btn btn-primary">lire la suite</a>
                 </div>
             </articles>
         {% endfor %}
