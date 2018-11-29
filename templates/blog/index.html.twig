@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello World {{ controller_name }}!{% endblock %}
+{% block title %}Bonjour le monde {{ controller_name }}!{% endblock %}
 
 {% block body %}
     <section class="articles">
@@ -10,9 +10,9 @@
             <articles>
                 <h2>{{ article.title }}</h2>
                 <div class="metada">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date("H:i")  }}
-                    dans la catégorie jardinage</div>
+                    dans la catégorie {{ article.category.title }}</div>
                 <div class="content">
-                    <img src="{{ article.image }}" alt="">
+                    <img src="{{ article.image }}" class="img-fluid" alt="Responsive image">
                     {{ article.content | raw }}
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta earum facere maiores quidem rem sit?</p>
                     <p>Assumenda eligendi enim id incidunt, ipsa iure libero modi optio quaerat quasi repudiandae sint

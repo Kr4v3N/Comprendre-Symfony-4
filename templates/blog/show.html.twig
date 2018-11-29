@@ -10,7 +10,7 @@
                 à {{ article.createdAt | date('H:i') }}
                 dans la catégorie {{ article.category.title }}</div>
             <div class="content">
-                <img src="{{ article.image}}" alt="">
+                <img src="{{ article.image}}" class="img-fluid" alt="Responsive image">
                 {{ article.content | raw }}
             </div>
 </article>
