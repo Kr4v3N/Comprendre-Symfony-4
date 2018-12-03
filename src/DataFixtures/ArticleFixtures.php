@@ -17,20 +17,20 @@ class ArticleFixtures extends Fixture
     {
         $faker = \Faker\Factory::create('fr_FR');
 
-        // Créer 3 fausses categories
+        // Créer 5 fausses catégories
 
-        for ($i =1; $i <= 3; $i++){
+        for ($i =1; $i <= 5; $i++){
 
             $category = new Category();
 
-            $category->setTitle($faker->sentence())
+            $category->setTitle(mb_strtolower($faker->sentence()))
                      ->setDescription($faker->paragraph());
 
             $manager->persist($category);
 
-            // Créer entre 4 et 6 faux articles
+            // Créer entre 10 et 12 faux articles
 
-            for($j = 1; $j <= mt_rand(4,6); $j++){
+            for($j = 1; $j <= mt_rand(10,12); $j++){
 
                 $article = new Article();
 
@@ -42,7 +42,7 @@ class ArticleFixtures extends Fixture
                         ->setCreatedAt($faker->dateTimeBetween('-6 months'))
                         ->setCategory($category)); */
 
-                $article->setTitle($faker->sentence);
+                $article->setTitle(mb_strtolower($faker->sentence));
                 $article->setContent($content);
                 $article->setImage($faker->imageUrl());
                 $article->setCreatedAt($faker->dateTimeBetween('-6 months'));
@@ -81,3 +81,36 @@ class ArticleFixtures extends Fixture
         $manager->flush();
     }
 }
+
+//namespace App\DataFixtures;
+//
+//use App\Entity\Category;
+//use Doctrine\Bundle\FixturesBundle\Fixture;
+//use Doctrine\Bundle\FixturesBundle\Tests\Fixtures;
+//use Doctrine\Common\Persistence\ObjectManager;
+
+//class CategoryFixtures extends Fixture
+//{
+//    private $categories =
+//        [
+//            'PHP',
+//            'Javascript',
+//            'Java',
+//            'Ruby',
+//            'Python',
+//        ];
+//
+//    public function load(ObjectManager $manager)
+//    {
+//        foreach ($this->categories as $key => $categoryName)
+//        {
+//            $category = new Category();
+//            $category->setTitle($categoryName);
+//            $manager->persist($category);
+//            $this->addReference('categorie_' . $key, $category);
+//
+//        }
+//        $manager->flush();
+//    }
+//
+//}
